@@ -1,0 +1,20 @@
+.main img {
+    width: 640px;
+    height: auto;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.groupShop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.womenShop {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.menShop {
+
+}
