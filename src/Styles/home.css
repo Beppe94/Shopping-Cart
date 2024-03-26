@@ -5,16 +5,7 @@
     border: 2px solid black;
 }
 
-.groupShop {
+.grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-}
-
-.womenShop {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.menShop {
-
 }
