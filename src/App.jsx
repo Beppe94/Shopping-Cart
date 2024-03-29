@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("https://fakestoreapi.com/products/category/jewelery")
+      const data = await fetch("https://fakestoreapi.com/products/category/electronics")
       const res = await data.json()
       console.log(res);
     }
