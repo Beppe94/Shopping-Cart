@@ -4,16 +4,17 @@ import NavBar from './Nav'
 import Home from './Home'
 
 function App() {
+  const [products, setProducts] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("https://fakestoreapi.com/products/category/electronics")
+      const data = await fetch("https://fakestoreapi.com/products")
       const res = await data.json()
       console.log(res);
     }
 
     fetchData()
-  })
+  }, [])
 
   return (
     <div>

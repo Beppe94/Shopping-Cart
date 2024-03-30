@@ -35,3 +35,17 @@ li {
     align-items: center;
     gap: 10px;
 }
+
+.cartItems {
+    position: relative;
+}
+
+.cartItems span {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -15px;
+    top: -19px;
+}

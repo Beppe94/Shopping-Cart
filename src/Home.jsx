@@ -15,12 +15,14 @@ function Home() {
                 </div>
                 <div>
                     <h2>Browse our collection of clothes and accessories</h2>
+                    <p>Find a wide selection of great quality outfits</p>
                 </div>
             </div>
             <div className="womenShop grid">
                 <div>
                     <h3>Stylish and sophisticated outfit</h3>
                     <h2>Check out the latest collection for women</h2>
+                    <p>Whether you prefer classic silhouettes or modern cuts, our collection offers a diverse range of styles to suit every taste</p>
                     <Link to="womenShop">
                         <button>Women's Clothes</button>
                     </Link>
@@ -46,7 +48,7 @@ function Home() {
                 <div>
                     <h3>Elegance and luxury made for you</h3>
                     <h2>Browse our collection of timeless jewels</h2>
-                    <p>Indulge in timeless elegance with our exquisite jewelry collection, curated to adorn you with sophistication and style.</p>
+                    <p>Indulge in timeless elegance with our exquisite jewelry collection, curated to adorn you with sophistication and style</p>
                     <Link to="jewelery">
                         <button>Jewels Shop</button>
                     </Link>

@@ -22,7 +22,7 @@ function NavBar() {
                     <img src={Home} alt="Home icon" />
                 </div>
                 <div className="dropDownContainer" onClick={() => setDropDown((prev) => !prev)}>
-                    <div className="">
+                    <div className="shopButton">
                         <button className="align">
                             <img src={dropDown ? ArrowUp : ArrowDown} alt="Arrow icon" />
                             Shop
@@ -61,7 +61,10 @@ function NavBar() {
             
                 <div className=" align">
                     <Link to="cart">Cart</Link>
-                    <img src={ShoppingCart} alt="Shopping Cart icon" />
+                    <div className="cartItems">
+                        <img src={ShoppingCart} alt="Shopping Cart icon" />
+                        <span>0</span>
+                    </div>
                 </div>
             </div>
         </div>

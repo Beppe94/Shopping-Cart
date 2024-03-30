@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Shop from './Shop';
+import WomenShop from './WomenShop';
 
 function Router() {
     const router = createBrowserRouter([
@@ -9,9 +9,9 @@ function Router() {
             element: <App />
         },
         {
-            path: "shop",
-            element: <Shop />
-        }
+            path: "womenShop",
+            element: <WomenShop />
+        },
     ]);
 
     return (
