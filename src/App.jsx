@@ -10,7 +10,7 @@ function App() {
     const fetchData = async () => {
       const data = await fetch("https://fakestoreapi.com/products")
       const res = await data.json()
-      console.log(res);
+      //console.log(res);
     }
 
     fetchData()
@@ -18,8 +18,8 @@ function App() {
 
   return (
     <div>
-      <NavBar />
-      <Home />
+        <NavBar />
+        <Home />
     </div>
   )
 }

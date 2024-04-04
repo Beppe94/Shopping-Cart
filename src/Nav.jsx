@@ -1,6 +1,6 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "/src/Styles/nav.css"
-import ShoppingCart from "./Images/ShoppingCart.svg"
+import ShoppingCartLogo from "./Images/ShoppingCart.svg"
 import Shop from "./Images/Shop.svg"
 import Home from "./Images/Home.svg"
 import ArrowDown from "./Images/ArrowDown.svg"
@@ -8,9 +8,8 @@ import ArrowUp from "./Images/ArrowUp.svg"
 import { useState } from "react";
 
 function NavBar() {
-    const [dropDown, setDropDown] = useState(false)
-
-
+    const [dropDown, setDropDown] = useState(false);
+    
     return (
         <div className="navBar">
             <div>
@@ -34,22 +33,22 @@ function NavBar() {
                             <div className="dropDown">
                                 <ul>
                                     <li>
-                                        <Link to="womenShop">
+                                        <Link to="/womenShop">
                                             <button>Women's Clothes</button>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="menShop">
+                                        <Link to="/menShop">
                                             <button>Men's Clothes</button>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="jewelery">
+                                        <Link to="/jewelery">
                                             <button>Jewelery</button>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="techShop">
+                                        <Link to="/techShop">
                                             <button>Tech Shop</button>
                                         </Link>
                                     </li>
@@ -60,9 +59,9 @@ function NavBar() {
                 </div>
             
                 <div className=" align">
-                    <Link to="cart">Cart</Link>
+                    <Link to="/cart">Cart</Link>
                     <div className="cartItems">
-                        <img src={ShoppingCart} alt="Shopping Cart icon" />
+                        <img src={ShoppingCartLogo} alt="Shopping Cart icon" />
                         <span>0</span>
                     </div>
                 </div>

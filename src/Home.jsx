@@ -64,7 +64,7 @@ function Home() {
                 <div>
                     <h3>High end tech gear</h3>
                     <h2>Dive into the future of tech</h2>
-                    <p>Inovation and cutting-edge tech for your gaming sessions</p>
+                    <p>Innovation and cutting-edge tech for your gaming sessions</p>
                     <Link to="techShop">
                         <button>Tech Shop</button>
                     </Link>

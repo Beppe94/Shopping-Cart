@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import WomenShop from './WomenShop';
+import ShoppingCart from './Cart';
 
 function Router() {
     const router = createBrowserRouter([
@@ -12,6 +13,10 @@ function Router() {
             path: "womenShop",
             element: <WomenShop />
         },
+        {
+            path:"cart",
+            element: <ShoppingCart />
+        }
     ]);
 
     return (
