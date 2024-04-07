@@ -1,6 +1,6 @@
 import "/src/Styles/CardItem.css"
 
-function CardItem({title, image, price, index, handleClick}) {
+function CardItem({title, image, price, handleClickF, index}) {
 
     return (
         <div className="card">
@@ -11,7 +11,7 @@ function CardItem({title, image, price, index, handleClick}) {
                 <h2>{title}</h2>
                 <p>{price}€</p>
                 <div>
-                    <button onClick={() => handleClick(index)}>
+                    <button onClick={() => handleClickF(index)}>
                         Add to Cart
                     </button>
                 </div>

@@ -7,9 +7,9 @@ import ArrowDown from "./Images/ArrowDown.svg"
 import ArrowUp from "./Images/ArrowUp.svg"
 import { useState } from "react";
 
-function NavBar() {
+function NavBar({cart}) {
     const [dropDown, setDropDown] = useState(false);
-    
+
     return (
         <div className="navBar">
             <div>
@@ -62,7 +62,7 @@ function NavBar() {
                     <Link to="/cart">Cart</Link>
                     <div className="cartItems">
                         <img src={ShoppingCartLogo} alt="Shopping Cart icon" />
-                        <span>0</span>
+                        <span>{cart}</span>
                     </div>
                 </div>
             </div>
