@@ -2,14 +2,16 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CardItem from "./CardItem";
 import { useDispatch, useSelector } from "react-redux";
-import { addClotheObject, addIndexClothes } from "./prouctSlice";
+import { addClotheObject, addIndexClothes, cartTotalProducts } from "./prouctSlice";
 
 
 function WomenShop() {
+    const cartLength = useSelector((state) => state.womenClothes.cartProducts);
+
     const [womenClothes, setWomenClothes] = useState(null)
     const [cart, setCart] = useState([])
 
-    const count = useSelector((state) => state.womenClothes.value);
+
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -27,12 +29,15 @@ function WomenShop() {
         dispatch(addIndexClothes(index));
         if(!cart.includes(index)) {
             setCart([...cart, index]);
+            dispatch(cartTotalProducts(index));
         }
     }
 
     useEffect(() => {
-        console.log(cart);
-    })
+        if(cartLength >= cart) {
+            setCart(cartLength);
+        }
+    }, [])
 
     return (
         <div>
@@ -55,7 +60,6 @@ function WomenShop() {
                     <p>loading...</p>
                 )}
             </div>
-            <span>{count}</span>
         </div>
     )
 }
