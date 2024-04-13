@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import WomenShop from './WomenShop';
 import ShoppingCart from './Cart';
+import MenShop from './MenShop';
 
 function Router() {
     const router = createBrowserRouter([
@@ -12,6 +13,10 @@ function Router() {
         {
             path: "womenShop",
             element: <WomenShop />
+        },
+        {
+            path: "menShop",
+            element: <MenShop />
         },
         {
             path:"cart",

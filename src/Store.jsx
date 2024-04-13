@@ -5,8 +5,8 @@ import cartTotalProducts from "./prouctSlice";
 
 export default configureStore({
     reducer: {
-        womenClothes: addIndexClothes,
-        womenClothes: addClotheObject,
-        womenClothes: cartTotalProducts
+        shop: addIndexClothes,
+        shop: addClotheObject,
+        shop: cartTotalProducts
     },
 })

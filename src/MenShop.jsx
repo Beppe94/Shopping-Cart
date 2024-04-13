@@ -1,58 +1,54 @@
-import NavBar from "./Nav";
-import { useEffect, useState } from "react";
-import CardItem from "./CardItem";
-import { useDispatch, useSelector } from "react-redux";
-import { addClotheObject, addIndexClothes, cartTotalProducts } from "./prouctSlice";
+import { useState, useEffect } from "react"
 import "/src/Styles/cardContainer.css"
+import NavBar from "./Nav";
+import { useDispatch, useSelector } from "react-redux";
+import CardItem from "./CardItem";
+import { addIndexClothes, cartTotalProducts, addClotheObject } from "./prouctSlice";
 
-function WomenShop() {
+function MenShop() {
     const cartLength = useSelector((state) => state.shop.cartProducts);
-
-    const [womenClothes, setWomenClothes] = useState(null)
-    const [cart, setCart] = useState([])
-
-
     const dispatch = useDispatch();
-    
+
+    const [menClothes, setMenClothes] = useState(null);
+    const [cart, setCart] = useState([]);
+
     useEffect(() => {
         const fetchData = async () => {
-          const data = await fetch("https://fakestoreapi.com/products/category/women's clothing")
-          const res = await data.json()
-          setWomenClothes(res)
+          const data = await fetch("https://fakestoreapi.com/products/category/men's clothing");
+          const res = await data.json();
+          setMenClothes(res);
           dispatch(addClotheObject(res));
         }
         
         fetchData();
     },[])
 
-    function handleClick(index) {
-        dispatch(addIndexClothes(index));
-        if(!cart.includes(index)) {
-            setCart([...cart, index]);
-            dispatch(cartTotalProducts(index));
-        }
-    }
-
     useEffect(() => {
         if(cartLength >= cart) {
             setCart(cartLength);
         }
-    }, [])
+    })
+
+    function handleClick(index) {
+        dispatch(addIndexClothes(index));
+        if(!cart.includes(index)) {
+            setCart([...cart, index]);
+            dispatch(cartTotalProducts(index))
+        }
+    }
 
     function renderStar(numberOfStars) {
-        const stars = "★".repeat(Math.floor(numberOfStars))
+        const stars = "★".repeat(Math.floor(numberOfStars));
 
         return stars;
     }
 
     return (
         <div>
-            <NavBar
-                cart={cart.length}
-            />
-            <div className="cardContainer">    
-                {womenClothes ? (
-                    womenClothes.map((object, index) => (
+            <NavBar cart={cart.length} />
+            <div className="cardContainer">
+                {menClothes ? (
+                    menClothes.map((object, index) => (
                         <CardItem 
                         key={index}
                         index={object.id}
@@ -65,11 +61,11 @@ function WomenShop() {
                         />
                     ))
                 ) : (
-                    <p>loading...</p>
+                    <p>...loading</p>
                 )}
             </div>
         </div>
     )
 }
 
-export default WomenShop;
+export default MenShop;

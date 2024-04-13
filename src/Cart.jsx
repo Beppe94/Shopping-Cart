@@ -5,12 +5,16 @@ import CartProducts from "./cartProducts";
 
 function ShoppingCart() {
 
-    const clothesIndex = useSelector((state) => state.womenClothes.value);
-    const clothesArray = useSelector((state) => state.womenClothes.clotheObject);
-    const cartProducts = useSelector((state) => state.womenClothes.cartProducts)
+    const clothesIndex = useSelector((state) => state.shop.value);
+    const clothesArray = useSelector((state) => state.shop.clotheObject);
+    const cartProducts = useSelector((state) => state.shop.cartProducts)
     const dispatch = useDispatch();
 
     const [indexArray, setIndexArray] = useState(clothesIndex)
+
+    useEffect(() => {
+        console.log(clothesArray);
+    })
 
     return(
         <div>
