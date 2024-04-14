@@ -3,7 +3,7 @@ import "/src/Styles/cardContainer.css"
 import NavBar from "./Nav";
 import { useDispatch, useSelector } from "react-redux";
 import CardItem from "./CardItem";
-import { addIndexClothes, cartTotalProducts, addClotheObject } from "./prouctSlice";
+import { addIndexClothes, cartTotalProducts, addMenClotheObject } from "./prouctSlice";
 
 function MenShop() {
     const cartLength = useSelector((state) => state.shop.cartProducts);
@@ -17,7 +17,7 @@ function MenShop() {
           const data = await fetch("https://fakestoreapi.com/products/category/men's clothing");
           const res = await data.json();
           setMenClothes(res);
-          dispatch(addClotheObject(res));
+          dispatch(addMenClotheObject(res));
         }
         
         fetchData();

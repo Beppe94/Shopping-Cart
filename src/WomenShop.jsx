@@ -2,7 +2,7 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CardItem from "./CardItem";
 import { useDispatch, useSelector } from "react-redux";
-import { addClotheObject, addIndexClothes, cartTotalProducts } from "./prouctSlice";
+import { addWomenClotheObject, addIndexClothes, cartTotalProducts } from "./prouctSlice";
 import "/src/Styles/cardContainer.css"
 
 function WomenShop() {
@@ -19,7 +19,7 @@ function WomenShop() {
           const data = await fetch("https://fakestoreapi.com/products/category/women's clothing")
           const res = await data.json()
           setWomenClothes(res)
-          dispatch(addClotheObject(res));
+          dispatch(addWomenClotheObject(res));
         }
         
         fetchData();

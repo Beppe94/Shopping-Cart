@@ -13,24 +13,29 @@ function ShoppingCart() {
     const [indexArray, setIndexArray] = useState(clothesIndex)
 
     useEffect(() => {
-        console.log(clothesArray);
+       
     })
 
     return(
         <div>
             <NavBar cart={cartProducts.length}/>
             <div>
-            {indexArray.map((index) => {
-                const clothes = clothesArray[0].find((clothes) => clothes.id === index);
+                {indexArray.map((index) => {
+                    const women = clothesArray.womenClothes.map(clothes => clothes.find(element => element.id === index));
+                    const men = clothesArray.menClothes.map(clothes => clothes.find(element => element.id === index));
+                    
+                    if(women || men) {
+                        const clothes = women[0] || men[0]; 
 
-                return clothes ? (
-                    <CartProducts 
-                    title={clothes.title}
-                    image={clothes.image}
-                    price={clothes.price}
-                    />
-                ) : null
-            })}
+                        return (
+                            <CartProducts
+                            title={clothes.title}
+                            price={clothes.price}
+                            image={clothes.image}
+                            />
+                        )
+                    }
+                })}
             </div>
         </div>
     )
