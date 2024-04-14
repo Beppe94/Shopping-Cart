@@ -4,7 +4,7 @@ const productSlice = createSlice({
     name: "shop",
     initialState: {
        value: [],
-       clotheObject: {womenClothes: [], menClothes: []},
+       productObject: {womenClothes: [], menClothes: [], jewelery: []},
        cartProducts: [],
     },
     reducers: {
@@ -16,14 +16,20 @@ const productSlice = createSlice({
         },
         addWomenClotheObject: (state, action) => {
             const objectToAdd = action.payload
-            if(!state.clotheObject.womenClothes.some(item => item.id === objectToAdd.id)) {
-                state.clotheObject.womenClothes.push(objectToAdd);
+            if(!state.productObject.womenClothes.some(item => item.id === objectToAdd.id)) {
+                state.productObject.womenClothes.push(objectToAdd);
             }
         },
         addMenClotheObject: (state, action) => {
             const objectToAdd = action.payload
-            if(!state.clotheObject.menClothes.some(item => item.id === objectToAdd.id)) {
-                state.clotheObject.menClothes.push(objectToAdd);
+            if(!state.productObject.menClothes.some(item => item.id === objectToAdd.id)) {
+                state.productObject.menClothes.push(objectToAdd);
+            }
+        },
+        addJewelery: (state, action) => {
+            const objectToAdd = action.payload;
+            if(!state.productObject.jewelery.some(item => item.id === objectToAdd.id)) {
+                state.productObject.jewelery.push(objectToAdd);
             }
         },
         cartTotalProducts: (state, action) => {
@@ -32,7 +38,7 @@ const productSlice = createSlice({
     },
 })
 
-export const { addIndexClothes, addWomenClotheObject, addMenClotheObject, cartTotalProducts } = productSlice.actions;
+export const { addIndexClothes, addWomenClotheObject, addMenClotheObject, cartTotalProducts, addJewelery } = productSlice.actions;
 
 
 export default productSlice.reducer

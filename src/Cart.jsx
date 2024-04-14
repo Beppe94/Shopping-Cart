@@ -6,7 +6,7 @@ import CartProducts from "./cartProducts";
 function ShoppingCart() {
 
     const clothesIndex = useSelector((state) => state.shop.value);
-    const clothesArray = useSelector((state) => state.shop.clotheObject);
+    const clothesArray = useSelector((state) => state.shop.productObject);
     const cartProducts = useSelector((state) => state.shop.cartProducts)
     const dispatch = useDispatch();
 

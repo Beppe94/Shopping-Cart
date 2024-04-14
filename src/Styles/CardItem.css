@@ -1,5 +1,5 @@
 .card {
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgb(255, 255, 255)55% , rgb(175, 175, 91));
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -7,8 +7,11 @@
     border: 2px solid black;
     border-radius: 20px;
     width: 350px;
+    height: 700px;
     box-shadow: 0 0 15px 3px grey;
     transition: .5s;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .card:hover {
@@ -18,7 +21,7 @@
 
 .card img {
     width: 300px;
-    height: 400px;
+    height: 380px;
     padding: 10px;
 }
 
@@ -29,6 +32,10 @@
 }
 
 .cardButton {
+    position: absolute;
+    bottom: 10px;
+    left: 35px;
     display: flex;
-    justify-content: space-around;
+    width: 80%;
+    justify-content: space-between;
 }
