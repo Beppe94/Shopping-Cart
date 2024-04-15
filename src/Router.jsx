@@ -3,6 +3,8 @@ import App from './App';
 import WomenShop from './WomenShop';
 import ShoppingCart from './Cart';
 import MenShop from './MenShop';
+import JewelShop from './JewelShop';
+
 
 function Router() {
     const router = createBrowserRouter([
@@ -19,9 +21,13 @@ function Router() {
             element: <MenShop />
         },
         {
-            path:"cart",
+            path: "cart",
             element: <ShoppingCart />
-        }
+        },
+        {
+            path: "jewelery",
+            element: <JewelShop />
+        },
     ]);
 
     return (

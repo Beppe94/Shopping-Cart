@@ -24,7 +24,7 @@ function MenShop() {
     },[])
 
     useEffect(() => {
-        if(cartLength >= cart) {
+        if(cartLength.length >= cart.length) {
             setCart(cartLength);
         }
     })

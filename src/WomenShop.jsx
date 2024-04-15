@@ -34,10 +34,10 @@ function WomenShop() {
     }
 
     useEffect(() => {
-        if(cartLength >= cart) {
+        if(cartLength.length >= cart.length) {
             setCart(cartLength);
         }
-    }, [])
+    });
 
     function renderStar(numberOfStars) {
         const stars = "★".repeat(Math.floor(numberOfStars))

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CartProducts from "./cartProducts";
+import "/src/Styles/cart.css"
 
 function ShoppingCart() {
 
@@ -17,10 +18,13 @@ function ShoppingCart() {
     })
 
     return(
-        <div>
-            <NavBar cart={cartProducts.length}/>
-            <div>
-                {indexArray.map((index) => {
+        <div className="cartComponent">
+            <div className="navSection">
+                <NavBar cart={cartProducts.length}/>
+            </div>
+            <div className="cardContainer">
+                {indexArray.length > 0 ? (
+                    indexArray.map((index) => {
                     const women = clothesArray.womenClothes.map(clothes => clothes.find(element => element.id === index));
                     const men = clothesArray.menClothes.map(clothes => clothes.find(element => element.id === index));
                     
@@ -35,7 +39,12 @@ function ShoppingCart() {
                             />
                         )
                     }
-                })}
+                })) : (
+                    <div>
+                        <h1>The cart is empty!</h1>
+                        <h3>Choose something from our shop</h3>
+                    </div>
+                )}
             </div>
         </div>
     )
