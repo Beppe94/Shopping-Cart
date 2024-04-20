@@ -6,9 +6,9 @@ import "/src/Styles/cart.css"
 
 function ShoppingCart() {
 
-    const clothesIndex = useSelector((state) => state.shop.value);
-    const clothesArray = useSelector((state) => state.shop.productObject);
-    const cartProducts = useSelector((state) => state.shop.cartProducts)
+    const clothesIndex = useSelector((state) => state.clothesIndexReducer.value);
+    const productsArray = useSelector((state) => state.womenClothesReducer.productObject);
+    const cartProducts = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
     const [indexArray, setIndexArray] = useState(clothesIndex)
@@ -25,11 +25,12 @@ function ShoppingCart() {
             <div className="cardContainer">
                 {indexArray.length > 0 ? (
                     indexArray.map((index) => {
-                    const women = clothesArray.womenClothes.map(clothes => clothes.find(element => element.id === index));
-                    const men = clothesArray.menClothes.map(clothes => clothes.find(element => element.id === index));
-                    
-                    if(women || men) {
-                        const clothes = women[0] || men[0]; 
+                    const women = productsArray.womenClothes.map(clothes => clothes.find(element => element.id === index));
+                    const men = productsArray.menClothes.map(clothes => clothes.find(element => element.id === index));
+                    const jewelery = productsArray.jewelery.map(jewels => jewels.find(element => element.id === index))
+
+                    if(women || men || jewelery) {
+                        const clothes = women[0] || men[0] || jewelery[0]; 
 
                         return (
                             <CartProducts

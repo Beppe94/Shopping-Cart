@@ -6,7 +6,7 @@ import CardItem from "./CardItem";
 import { addIndexClothes, cartTotalProducts, addMenClotheObject } from "./prouctSlice";
 
 function MenShop() {
-    const cartLength = useSelector((state) => state.shop.cartProducts);
+    const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
     const [menClothes, setMenClothes] = useState(null);
@@ -60,9 +60,7 @@ function MenShop() {
                         rated={renderStar(object.rating.rate)}
                         />
                     ))
-                ) : (
-                    <p>...loading</p>
-                )}
+                ) : <div className="loading"></div>}
             </div>
         </div>
     )

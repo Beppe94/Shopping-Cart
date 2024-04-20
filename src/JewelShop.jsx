@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./Nav";
 import { useEffect, useState } from "react";
-import { addJewelery } from "./prouctSlice";
+import { addJewelery, addIndexClothes, cartTotalProducts } from "./prouctSlice";
+import CardItem from "./CardItem";
 
 function JewelShop() {
 
-    const cartLength = useSelector((state) => state.shop.cartProducts);
+    const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
     const [cart, setCart] = useState([]);
@@ -37,13 +38,32 @@ function JewelShop() {
         }
     }
 
+    function renderStar(numberOfStars) {
+        const stars = "★".repeat(Math.floor(numberOfStars));
+
+        return stars;
+    }
+
     return (
         <div>
             <div>
                 <NavBar cart={cart.length}/>
             </div>
-            <div>
-
+            <div className="cardContainer">
+                {jewelsProduct ? (
+                    jewelsProduct.map((object, index) => (
+                        <CardItem
+                        key={index}
+                        index={object.id}
+                        title={object.title}
+                        price={object.price}
+                        image={object.image}
+                        handleClickF={handleClick}
+                        count={object.rating.count}
+                        rated={renderStar(object.rating.rate)}
+                        />
+                    ))
+                ) : <div className="loading"></div>}
             </div>
         </div>
     )

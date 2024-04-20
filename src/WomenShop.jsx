@@ -6,7 +6,7 @@ import { addWomenClotheObject, addIndexClothes, cartTotalProducts } from "./prou
 import "/src/Styles/cardContainer.css"
 
 function WomenShop() {
-    const cartLength = useSelector((state) => state.shop.cartProducts);
+    const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
 
     const [womenClothes, setWomenClothes] = useState(null)
     const [cart, setCart] = useState([])
@@ -64,9 +64,7 @@ function WomenShop() {
                         rated={renderStar(object.rating.rate)}
                         />
                     ))
-                ) : (
-                    <p>loading...</p>
-                )}
+                ) : <div className="loading"></div>}
             </div>
         </div>
     )
