@@ -8,17 +8,16 @@ import "/src/Styles/cardContainer.css"
 function WomenShop() {
     const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
 
+    const dispatch = useDispatch();
+
     const [womenClothes, setWomenClothes] = useState(null)
     const [cart, setCart] = useState([])
-
-
-    const dispatch = useDispatch();
     
     useEffect(() => {
         const fetchData = async () => {
           const data = await fetch("https://fakestoreapi.com/products/category/women's clothing")
-          const res = await data.json()
-          setWomenClothes(res)
+          const res = await data.json();
+          setWomenClothes(res);
           dispatch(addWomenClotheObject(res));
         }
         
@@ -47,9 +46,9 @@ function WomenShop() {
 
     return (
         <div>
-            <NavBar
-                cart={cart.length}
-            />
+            <div>
+                <NavBar cart={cart.length} />
+            </div>
             <div className="cardContainer">    
                 {womenClothes ? (
                     womenClothes.map((object, index) => (

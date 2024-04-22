@@ -9,8 +9,10 @@ function CardItem({title, image, price, handleClickF, count, rated, index}) {
             </div>
             <div className="cardInfo">
                 <h2>{title}</h2>
-                <div>
-                    <p>{count} Reviews {rated}</p>
+                <div className="ratings">
+                    <p>{count}</p> 
+                    <p>Reviews</p>
+                    <p>{rated}</p>
                 </div>
                 <div className="cardButton">
                     <h3>{price}€</h3>

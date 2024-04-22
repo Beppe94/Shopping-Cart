@@ -4,7 +4,7 @@ import WomenShop from './WomenShop';
 import ShoppingCart from './Cart';
 import MenShop from './MenShop';
 import JewelShop from './JewelShop';
-
+import TechShop from './TechShop';
 
 function Router() {
     const router = createBrowserRouter([
@@ -28,6 +28,10 @@ function Router() {
             path: "jewelery",
             element: <JewelShop />
         },
+        {
+            path: "techShop",
+            element: <TechShop />
+        }
     ]);
 
     return (

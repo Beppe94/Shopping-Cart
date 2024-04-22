@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import addIndexClothes from "./prouctSlice";
+import addIndexClothes, { addTech } from "./prouctSlice";
 import addWomenClotheObject from "./prouctSlice";
 import addMenClotheObject from "./prouctSlice";
 import cartTotalProducts from "./prouctSlice";
@@ -14,5 +14,6 @@ export default configureStore({
         menClothesReducer: addMenClotheObject,
         cartProductsReducer: cartTotalProducts,
         jeweleryReducer: addJewelery,
+        techReducer: addTech,
     },
 })

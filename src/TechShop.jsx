@@ -1,42 +1,44 @@
-import { useState, useEffect } from "react"
-import "/src/Styles/cardContainer.css"
-import NavBar from "./Nav";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addTech } from "./prouctSlice";
+import NavBar from "./Nav";
 import CardItem from "./CardItem";
-import { addIndexClothes, cartTotalProducts, addMenClotheObject } from "./prouctSlice";
 
-function MenShop() {
-    const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
+function TechShop() {
+
+    const cartLenght = useSelector((state) => state.cartProductsReducer.cartProducts);
+
     const dispatch = useDispatch();
 
-    const [menClothes, setMenClothes] = useState(null);
+    const [techOject, setTechObject] = useState(null);
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-          const data = await fetch("https://fakestoreapi.com/products/category/men's clothing");
-          const res = await data.json();
-          setMenClothes(res);
-          dispatch(addMenClotheObject(res));
+            const data = await fetch("https://fakestoreapi.com/products/category/electronics");
+            const res = await data.json();
+            setTechObject(res);
+            dispatch(addTech(res));
+            console.log(res);
         }
-        
+
         fetchData();
-    },[])
+    }, [])
 
     useEffect(() => {
-        if(cartLength.length >= cart.length) {
-            setCart(cartLength);
+        if(cartLenght.length >= cart.length) {
+            setCart(cartLenght);
         }
     })
-
+    
     function handleClick(index) {
         dispatch(addIndexClothes(index));
         if(!cart.includes(index)) {
             setCart([...cart, index]);
-            dispatch(cartTotalProducts(index))
+            dispatch(cartTotalProducts(index));
         }
     }
-
+    
     function renderStar(numberOfStars) {
         const stars = "★".repeat(Math.floor(numberOfStars));
 
@@ -46,11 +48,11 @@ function MenShop() {
     return (
         <div>
             <div>
-                <NavBar cart={cart.length} />
+                <NavBar cart={cart.length}/>
             </div>
             <div className="cardContainer">
-                {menClothes ? (
-                    menClothes.map((object, index) => (
+                {techOject ? (
+                    techOject.map((object, index) => (
                         <CardItem 
                         key={index}
                         index={object.id}
@@ -68,4 +70,4 @@ function MenShop() {
     )
 }
 
-export default MenShop;
+export default TechShop;

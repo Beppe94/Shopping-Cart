@@ -1,13 +1,13 @@
 .card {
     background: linear-gradient(180deg, rgb(255, 255, 255)60% , rgb(175, 175, 91));
-    padding: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     width: min-content;
     border: 2px solid black;
     border-radius: 20px;
     width: 350px;
-    height: 700px;
+    height: 710px;
     box-shadow: 0 0 15px 3px grey;
     transition: .5s;
     box-sizing: border-box;
@@ -18,22 +18,27 @@
     scale: 1.05;
 }
 
-
 .card img {
+    object-fit: contain;
     width: 300px;
-    height: 380px;
-    padding: 10px;
+    height: 340px;
+}
+
+.ratings {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .cardInfo {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    justify-content: center;
 }
 
 .cardInfo h2 {
-    
-    font-size: 22px;
+    font-size: 21px;
 }
 
 .cardButton {
