@@ -11,11 +11,8 @@ function ShoppingCart() {
     const cartProducts = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
-    const [indexArray, setIndexArray] = useState(clothesIndex)
+    const [indexArray, setIndexArray] = useState(clothesIndex);
 
-    useEffect(() => {
-       
-    })
 
     return(
         <div className="cartComponent">
@@ -27,16 +24,17 @@ function ShoppingCart() {
                     indexArray.map((index) => {
                     const women = productsArray.womenClothes.map(clothes => clothes.find(element => element.id === index));
                     const men = productsArray.menClothes.map(clothes => clothes.find(element => element.id === index));
-                    const jewelery = productsArray.jewelery.map(jewels => jewels.find(element => element.id === index))
+                    const jewelery = productsArray.jewelery.map(jewels => jewels.find(element => element.id === index));
+                    const electronics = productsArray.techs.map(tech => tech.find(element => element.id === index));
 
-                    if(women || men || jewelery) {
-                        const clothes = women[0] || men[0] || jewelery[0]; 
+                    if(women || men || jewelery || electronics) {
+                        const object = women[0] || men[0] || jewelery[0] || electronics[0]; 
 
                         return (
                             <CartProducts
-                            title={clothes.title}
-                            price={clothes.price}
-                            image={clothes.image}
+                            title={object.title}
+                            price={object.price}
+                            image={object.image}
                             />
                         )
                     }

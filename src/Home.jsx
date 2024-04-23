@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import "/src/Styles/home.css"
 
 function Home() {
+    
     return(
         <div className="main">
             <div className="groupShop grid">

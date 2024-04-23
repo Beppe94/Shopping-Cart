@@ -21,7 +21,7 @@ li {
 .dropDown {
     position: absolute;
     top: 30px;
-    right: -24px;
+    right: -10px;
     width: max-content;
     z-index: 999;
 }

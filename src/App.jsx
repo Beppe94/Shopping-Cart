@@ -2,23 +2,22 @@ import { useEffect, useState } from 'react'
 import './Styles/App.css'
 import NavBar from './Nav'
 import Home from './Home'
+import { useSelector } from 'react-redux'
 
 function App() {
-  const [products, setProducts] = useState(null)
+  const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
+    
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetch("https://fakestoreapi.com/products")
-      const res = await data.json()
-      //console.log(res);
-    }
-
-    fetchData()
-  }, [])
+      if(cartLength.length >= cart.length) {
+          setCart(cartLength);
+      }
+  })
 
   return (
     <div>
-        <NavBar />
+        <NavBar cart={cart.length} />
         <Home />
     </div>
   )

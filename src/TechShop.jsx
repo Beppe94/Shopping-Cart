@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTech } from "./prouctSlice";
+import { addTech, cartTotalProducts, addIndexClothes } from "./prouctSlice";
 import NavBar from "./Nav";
 import CardItem from "./CardItem";
 
