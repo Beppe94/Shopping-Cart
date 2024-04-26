@@ -10,8 +10,8 @@ function WomenShop() {
 
     const dispatch = useDispatch();
 
-    const [womenClothes, setWomenClothes] = useState(null)
-    const [cart, setCart] = useState([])
+    const [womenClothes, setWomenClothes] = useState(null);
+    const [cart, setCart] = useState(cartLength);
     
     useEffect(() => {
         const fetchData = async () => {
@@ -31,12 +31,6 @@ function WomenShop() {
             dispatch(cartTotalProducts(index));
         }
     }
-
-    useEffect(() => {
-        if(cartLength.length >= cart.length) {
-            setCart(cartLength);
-        }
-    });
 
     function renderStar(numberOfStars) {
         const stars = "★".repeat(Math.floor(numberOfStars))

@@ -41,6 +41,12 @@ const productSlice = createSlice({
         cartTotalProducts: (state, action) => {
             state.cartProducts.push(action.payload)
         },
+        removeCartProducts: (state, action) => {
+            const itemIndex = action.payload
+
+            state.cartProducts = state.cartProducts.filter(item => item !== itemIndex)
+            state.value = state.value.filter(item => item !== itemIndex)
+        }
     },
 })
 
@@ -50,7 +56,9 @@ export const {
     addMenClotheObject, 
     cartTotalProducts, 
     addJewelery, 
-    addTech } = productSlice.actions;
+    addTech,
+    removeCartProducts,    
+} = productSlice.actions;
 
 
 export default productSlice.reducer

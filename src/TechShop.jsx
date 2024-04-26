@@ -11,7 +11,7 @@ function TechShop() {
     const dispatch = useDispatch();
 
     const [techOject, setTechObject] = useState(null);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(cartLenght);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,17 +19,10 @@ function TechShop() {
             const res = await data.json();
             setTechObject(res);
             dispatch(addTech(res));
-            console.log(res);
         }
 
         fetchData();
     }, [])
-
-    useEffect(() => {
-        if(cartLenght.length >= cart.length) {
-            setCart(cartLenght);
-        }
-    })
     
     function handleClick(index) {
         dispatch(addIndexClothes(index));

@@ -3,21 +3,38 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CartProducts from "./cartProducts";
 import "/src/Styles/cart.css"
+import { removeCartProducts } from "./prouctSlice";
 
 function ShoppingCart() {
 
     const clothesIndex = useSelector((state) => state.clothesIndexReducer.value);
     const productsArray = useSelector((state) => state.womenClothesReducer.productObject);
-    const cartProducts = useSelector((state) => state.cartProductsReducer.cartProducts);
+    const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
     const [indexArray, setIndexArray] = useState(clothesIndex);
+    const [cart, setCart] = useState([]);
+ 
+    function removeItem(index) {
+        const newIndexArray = indexArray.filter(element => element !== index);
+        const newCart = cart.filter(element => element !== index);
 
+        setIndexArray(newIndexArray);
+        setCart(newCart);
+        dispatch(removeCartProducts(index));
+    }
+
+    useEffect(() => {
+        setCart(cartLength);
+    })
 
     return(
         <div className="cartComponent">
             <div className="navSection">
-                <NavBar cart={cartProducts.length}/>
+                <NavBar cart={cart.length}/>
+            </div>
+            <div>
+                <h2>Total: </h2>
             </div>
             <div className="cardContainer">
                 {indexArray.length > 0 ? (
@@ -32,9 +49,11 @@ function ShoppingCart() {
 
                         return (
                             <CartProducts
+                            index={object.id}
                             title={object.title}
                             price={object.price}
                             image={object.image}
+                            handleRemove={removeItem}
                             />
                         )
                     }

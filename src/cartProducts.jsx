@@ -1,9 +1,9 @@
 import "/src/Styles/productInCart.css"
 
 
-function CartProducts({title, price, image}) {
+function CartProducts({title, price, image, index, handleRemove}) {
     return (
-        <div className="productInCart">
+        <div className="productInCart" data-key="lol">
             <div>
                 <img src={image} />
             </div>
@@ -21,7 +21,9 @@ function CartProducts({title, price, image}) {
                         <input type="text" />
                         <button>-</button>
                     </div>
-                    <button className="removeBtn">Remove</button>
+                    <button className="removeBtn"
+                    onClick={() => handleRemove(index)}
+                    >Remove</button>
                 </div>
             </div>
         </div>

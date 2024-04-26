@@ -9,14 +9,8 @@ function JewelShop() {
     const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(cartLength);
     const [jewelsProduct, setJewelProduct] = useState(null);
-
-    useEffect(() => {
-        if(cartLength.length >= cart.length) {
-            setCart(cartLength)
-        }
-    }, [])
 
     useEffect(() => {
         const fetchData = async () => {

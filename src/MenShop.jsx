@@ -10,24 +10,30 @@ function MenShop() {
     const dispatch = useDispatch();
 
     const [menClothes, setMenClothes] = useState(null);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(cartLength);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-          const data = await fetch("https://fakestoreapi.com/products/category/men's clothing");
-          const res = await data.json();
-          setMenClothes(res);
-          dispatch(addMenClotheObject(res));
+            let data;
+            try {
+                data = await fetch("https://fakestoreapi.com/products/category/men's clothing");
+                if(!data.ok) {
+                    throw new Error("Faied to fetch data");
+                }
+            } catch (error) {
+                setError("Failed To Fetch Data");
+            }
+
+            if(data.ok) {
+                const res = await data.json();
+                setMenClothes(res);
+                dispatch(addMenClotheObject(res));
+            }
         }
         
         fetchData();
     },[])
-
-    useEffect(() => {
-        if(cartLength.length >= cart.length) {
-            setCart(cartLength);
-        }
-    })
 
     function handleClick(index) {
         dispatch(addIndexClothes(index));
@@ -62,7 +68,14 @@ function MenShop() {
                         rated={renderStar(object.rating.rate)}
                         />
                     ))
-                ) : <div className="loading"></div>}
+                ) : (
+                    error ? (
+                        <h2>{error}</h2>
+                    ) : (
+                        <div className="loading"></div>
+                    )
+                )
+                }
             </div>
         </div>
     )
