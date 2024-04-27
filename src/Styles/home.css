@@ -1,11 +1,58 @@
+.main {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
 .main img {
-    width: 640px;
+    width: 610px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 2px solid black;
+    object-fit: contain;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.groupShop {
+    background: linear-gradient(90deg, rgba(10, 90, 194, 0.863) 49%, rgb(209, 132, 16) 50%);
+}
+
+@media screen and (max-width: 1020px) {
+    .main img {
+        width: 440px;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column
+    }
+    .grid {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .groupShop {
+        background: linear-gradient(180deg, rgba(10, 90, 194, 0.863) 49%, rgb(209, 132, 16) 50%);
+    }
+
+    .womenShop {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .accessoriesShop {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
