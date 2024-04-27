@@ -11,14 +11,25 @@ function JewelShop() {
 
     const [cart, setCart] = useState(cartLength);
     const [jewelsProduct, setJewelProduct] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetch("https://fakestoreapi.com/products/category/jewelery")
-            const res = await data.json();
-            setJewelProduct(res);
-            dispatch(addJewelery(res));
-            console.log(res);
+            let data;
+            try {
+                data = await fetch("https://fakestoreapi.com/products/category/jewelery");
+                if(!data.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+            } catch (error) {
+                setError("Failed to fetch data, try again later");
+            }
+
+            if(data.ok) {
+                const res = await data.json();
+                setJewelProduct(res);
+                dispatch(addJewelery(res));
+            }
         }
           
         fetchData();
@@ -57,7 +68,13 @@ function JewelShop() {
                         rated={renderStar(object.rating.rate)}
                         />
                     ))
-                ) : <div className="loading"></div>}
+                ) : (
+                    error ? (
+                        <h2>{error}</h2>
+                    ) : (
+                        <div className="loading"></div>
+                    )
+                )}
             </div>
         </div>
     )

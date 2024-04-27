@@ -22,7 +22,7 @@ function MenShop() {
                     throw new Error("Faied to fetch data");
                 }
             } catch (error) {
-                setError("Failed To Fetch Data");
+                setError("Failed to fetch data, try again later");
             }
 
             if(data.ok) {

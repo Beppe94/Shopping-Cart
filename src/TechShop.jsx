@@ -7,18 +7,29 @@ import CardItem from "./CardItem";
 function TechShop() {
 
     const cartLenght = useSelector((state) => state.cartProductsReducer.cartProducts);
-
     const dispatch = useDispatch();
 
     const [techOject, setTechObject] = useState(null);
     const [cart, setCart] = useState(cartLenght);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await fetch("https://fakestoreapi.com/products/category/electronics");
-            const res = await data.json();
-            setTechObject(res);
-            dispatch(addTech(res));
+            let data;
+            try {
+                data = await fetch("https://fakestoreapi.com/products/category/electronics");
+                if(!data.ok) {
+                    throw new Error("Failed to fetch data");
+                }
+            } catch (error) {
+                setError("Failed to fetch data, try again later");
+            }
+
+            if(data.ok) {
+                const res = await data.json();
+                setTechObject(res);
+                dispatch(addTech(res));
+            }
         }
 
         fetchData();
@@ -57,7 +68,13 @@ function TechShop() {
                         rated={renderStar(object.rating.rate)}
                         />
                     ))
-                ) : <div className="loading"></div>}
+                ) : (
+                    error ? (
+                        <h2>{error}</h2>
+                    ) : (
+                        <div className="loading"></div>
+                    )
+                )}
             </div>
         </div>
     )

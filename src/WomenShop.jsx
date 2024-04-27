@@ -7,18 +7,29 @@ import "/src/Styles/cardContainer.css"
 
 function WomenShop() {
     const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
-
     const dispatch = useDispatch();
 
     const [womenClothes, setWomenClothes] = useState(null);
     const [cart, setCart] = useState(cartLength);
+    const [error, setError] = useState(null);
     
     useEffect(() => {
         const fetchData = async () => {
-          const data = await fetch("https://fakestoreapi.com/products/category/women's clothing")
-          const res = await data.json();
-          setWomenClothes(res);
-          dispatch(addWomenClotheObject(res));
+            let data;
+            try {
+                data = await fetch("https://fakestoreapi.com/products/category/women's clothing");
+                if(!data.ok) {
+                    throw new Error("Faied to fetch data");
+                }
+            } catch(error) {
+                setError("Failed to fetch data, try again later");
+            }
+
+            if(data.ok) {
+                const res = await data.json();
+                setWomenClothes(res);
+                dispatch(addWomenClotheObject(res));
+            }
         }
         
         fetchData();
@@ -57,7 +68,13 @@ function WomenShop() {
                         rated={renderStar(object.rating.rate)}
                         />
                     ))
-                ) : <div className="loading"></div>}
+                ) : (
+                    error ? (
+                        <h2>{error}</h2>
+                    ) : (
+                        <div className="loading"></div>
+                    )
+                )}
             </div>
         </div>
     )
