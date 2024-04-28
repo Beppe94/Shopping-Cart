@@ -6,11 +6,11 @@ import CardItem from "./CardItem";
 
 function TechShop() {
 
-    const cartLenght = useSelector((state) => state.cartProductsReducer.cartProducts);
+    const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
     const [techOject, setTechObject] = useState(null);
-    const [cart, setCart] = useState(cartLenght);
+    const [cart, setCart] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -35,6 +35,11 @@ function TechShop() {
         fetchData();
     }, [])
     
+    useEffect(() => {
+        setCart(cartLength);
+    }, [cartLength])
+    
+
     function handleClick(index) {
         dispatch(addIndexClothes(index));
         if(!cart.includes(index)) {

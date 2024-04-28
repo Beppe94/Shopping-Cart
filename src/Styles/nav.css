@@ -3,6 +3,7 @@ li {
 }
 
 .navBar {
+    padding: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,10 +21,17 @@ li {
 
 .dropDown {
     position: absolute;
-    top: 30px;
-    right: -10px;
+    top: 45px;
+    right: 0px;
     width: max-content;
     z-index: 999;
+    animation: slide .3s ease-in;
+}
+
+@keyframes slide {
+    0% {opacity: 0; transform: translateY(-80px);}
+    50% {opacity: .5; scale: 1.1;}
+    100% {opacity: 1; transform: translateY(0px);}
 }
 
 .dropDown button {

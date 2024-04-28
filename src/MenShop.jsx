@@ -10,7 +10,7 @@ function MenShop() {
     const dispatch = useDispatch();
 
     const [menClothes, setMenClothes] = useState(null);
-    const [cart, setCart] = useState(cartLength);
+    const [cart, setCart] = useState([]);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -34,6 +34,11 @@ function MenShop() {
         
         fetchData();
     },[])
+
+    useEffect(() => {
+        setCart(cartLength);
+    }, [cartLength])
+    
 
     function handleClick(index) {
         dispatch(addIndexClothes(index));

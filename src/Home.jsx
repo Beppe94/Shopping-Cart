@@ -14,13 +14,13 @@ function Home() {
                 <div>
                     <img src={groupShopping} alt="Group of people with shopping bags"/>
                 </div>
-                <div>
+                <div className="description">
                     <h2>Browse our collection of clothes and accessories</h2>
                     <p>Find a wide selection of great quality outfits</p>
                 </div>
             </div>
             <div className="womenShop grid">
-                <div>
+                <div className="description">
                     <h3>Stylish and sophisticated outfit</h3>
                     <h2>Check out the latest collection for women</h2>
                     <p>Whether you prefer classic silhouettes or modern cuts, our collection offers a diverse range of styles to suit every taste</p>
@@ -36,7 +36,7 @@ function Home() {
                 <div>
                     <img src={ClothesM} alt="Man shopping for clothes" />
                 </div>
-                <div>
+                <div className="description">
                     <h3>Quality and fashion</h3>
                     <h2>Explore the latest collection for men</h2>
                     <p>Discover sophistication and style in every stitch with our curated collection of men's apparel</p>
@@ -46,7 +46,7 @@ function Home() {
                 </div>
             </div>
             <div className="accessoriesShop grid">
-                <div>
+                <div className="description">
                     <h3>Elegance and luxury made for you</h3>
                     <h2>Browse our collection of timeless jewels</h2>
                     <p>Indulge in timeless elegance with our exquisite jewelry collection, curated to adorn you with sophistication and style</p>
@@ -62,7 +62,7 @@ function Home() {
                 <div>
                     <img src={Electronics} alt="Various electronics" />
                 </div>
-                <div>
+                <div className="description">
                     <h3>High end tech gear</h3>
                     <h2>Dive into the future of tech</h2>
                     <p>Innovation and cutting-edge tech for your gaming sessions</p>
@@ -70,6 +70,9 @@ function Home() {
                         <button>Tech Shop</button>
                     </Link>
                 </div>
+            </div>
+            <div className="attribution">
+                <p>All images from <a href="https://www.freepik.com/" rel="noreferrer">FreePik</a></p>
             </div>
         </div>
     )

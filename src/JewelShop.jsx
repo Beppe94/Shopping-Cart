@@ -9,7 +9,7 @@ function JewelShop() {
     const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
     const dispatch = useDispatch();
 
-    const [cart, setCart] = useState(cartLength);
+    const [cart, setCart] = useState([]);
     const [jewelsProduct, setJewelProduct] = useState(null);
     const [error, setError] = useState(null);
 
@@ -34,6 +34,11 @@ function JewelShop() {
           
         fetchData();
     }, [])
+
+    useEffect(() => {
+        setCart(cartLength);
+    }, [cartLength])
+    
 
     function handleClick(index) {
         dispatch(addIndexClothes(index));

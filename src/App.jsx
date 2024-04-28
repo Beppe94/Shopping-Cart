@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Styles/App.css'
 import NavBar from './Nav'
 import Home from './Home'
@@ -10,10 +10,8 @@ function App() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-      if(cartLength.length >= cart.length) {
-          setCart(cartLength);
-      }
-  })
+    setCart(cartLength);
+  }, [cartLength])
 
   return (
     <div>
