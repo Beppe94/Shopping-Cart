@@ -1,12 +1,12 @@
 .navSection {
     position: absolute;
     top: 0;
-    width: 1280px;
+    width: 100%;
 }
 
 .cartComponent {
-    margin-top: 100px;
-    width: 1280px;
+    margin-top: 150px;
+    display: flex;
 }
 
 .cardContainerCart {

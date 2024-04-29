@@ -14,7 +14,7 @@ function ShoppingCart() {
 
     const [indexArray, setIndexArray] = useState(clothesIndex);
     const [cart, setCart] = useState([]);
- 
+    
     function removeItem(index) {
         const newIndexArray = indexArray.filter(element => element !== index);
         const newCart = cart.filter(element => element !== index);
@@ -27,6 +27,8 @@ function ShoppingCart() {
     useEffect(() => {
         setCart(cartLength);
     })
+
+   
 
     return(
         <div className="cartComponent">
