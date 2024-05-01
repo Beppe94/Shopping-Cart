@@ -6,6 +6,7 @@ const productSlice = createSlice({
        value: [],
        productObject: {womenClothes: [], menClothes: [], jewelery: [], techs: []},
        cartProducts: [],
+       quantity: [],
     },
     reducers: {
         addIndexClothes: (state, action) => {
@@ -46,18 +47,25 @@ const productSlice = createSlice({
 
             state.cartProducts = state.cartProducts.filter(item => item !== itemIndex)
             state.value = state.value.filter(item => item !== itemIndex)
+        },
+        addProductQuantity: (state, action) => {
+            const amountOfItems = action.payload;
+            if(!state.quantity.includes(amountOfItems)) {
+                state.quantity.push(amountOfItems);
+            }
         }
     },
 })
 
 export const { 
     addIndexClothes, 
-    addWomenClotheObject, 
-    addMenClotheObject, 
-    cartTotalProducts, 
-    addJewelery, 
+    addWomenClotheObject,
+    addMenClotheObject,
+    cartTotalProducts,
+    addJewelery,
     addTech,
-    removeCartProducts,    
+    removeCartProducts,
+    amountOfItems,
 } = productSlice.actions;
 
 

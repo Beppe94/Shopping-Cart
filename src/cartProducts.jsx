@@ -2,9 +2,9 @@ import "/src/Styles/productInCart.css"
 import add from "./Images/add.svg"
 import remove from "./Images/remove.svg"
 
-function CartProducts({title, price, image, index, handleRemove, quantity}) {
+function CartProducts({title, price, image, index, handleRemove, quantity,getKey}) {
     return (
-        <div className="productInCart" data-key="lol">
+        <div className="productInCart" data-key={index}>
             <div>
                 <img src={image} />
             </div>
@@ -17,9 +17,9 @@ function CartProducts({title, price, image, index, handleRemove, quantity}) {
                 </div>
                 <div className="productButtons">
                         <h3>Select Amount</h3>
-                        <h2>Quantity: {quantity}</h2>
+                        <h2>Quantity: {1 || quantity}</h2>
                     <div className="selectBtn">
-                        <button><img src={remove} alt="" /></button>
+                        <button onClick={getKey}><img src={remove} alt="" /></button>
                         <button> <img src={add} alt="" /></button>
                     </div>
                     <button className="removeBtn"
