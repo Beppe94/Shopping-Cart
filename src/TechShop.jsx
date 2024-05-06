@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTech, cartTotalProducts, addIndexClothes } from "./prouctSlice";
+import { addTech, cartTotalProducts, addIndexClothes, addProductQuantity } from "./prouctSlice";
 import NavBar from "./Nav";
 import CardItem from "./CardItem";
 
@@ -45,6 +45,7 @@ function TechShop() {
         if(!cart.includes(index)) {
             setCart([...cart, index]);
             dispatch(cartTotalProducts(index));
+            dispatch(addProductQuantity({index, quantity: 1}));
         }
     }
     

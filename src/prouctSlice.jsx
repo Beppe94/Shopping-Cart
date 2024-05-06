@@ -53,6 +53,10 @@ const productSlice = createSlice({
             if(!state.quantity.includes(amountOfItems)) {
                 state.quantity.push(amountOfItems);
             }
+        },
+        removeProductQuantity: (state, action) => {
+            const itemToRemove = action.payload;
+            state.quantity = state.quantity.filter(item => item.index !== itemToRemove.index)
         }
     },
 })
@@ -65,7 +69,8 @@ export const {
     addJewelery,
     addTech,
     removeCartProducts,
-    amountOfItems,
+    addProductQuantity,
+    removeProductQuantity,
 } = productSlice.actions;
 
 

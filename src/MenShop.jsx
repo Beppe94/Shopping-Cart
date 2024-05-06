@@ -3,7 +3,7 @@ import "/src/Styles/cardContainer.css"
 import NavBar from "./Nav";
 import { useDispatch, useSelector } from "react-redux";
 import CardItem from "./CardItem";
-import { addIndexClothes, cartTotalProducts, addMenClotheObject } from "./prouctSlice";
+import { addIndexClothes, cartTotalProducts, addMenClotheObject, addProductQuantity } from "./prouctSlice";
 
 function MenShop() {
     const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
@@ -44,7 +44,8 @@ function MenShop() {
         dispatch(addIndexClothes(index));
         if(!cart.includes(index)) {
             setCart([...cart, index]);
-            dispatch(cartTotalProducts(index))
+            dispatch(cartTotalProducts(index));
+            dispatch(addProductQuantity({index, quantity: 1}));
         }
     }
 

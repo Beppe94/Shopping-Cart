@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import NavBar from "./Nav";
 import { useEffect, useState } from "react";
-import { addJewelery, addIndexClothes, cartTotalProducts } from "./prouctSlice";
+import { addJewelery, addIndexClothes, cartTotalProducts, addProductQuantity } from "./prouctSlice";
 import CardItem from "./CardItem";
 
 function JewelShop() {
@@ -45,7 +45,9 @@ function JewelShop() {
         if(!cart.includes(index)) {
             setCart([...cart, index]);
             dispatch(cartTotalProducts(index));
+            dispatch(addProductQuantity({index, quantity: 1}));
         }
+
     }
 
     function renderStar(numberOfStars) {

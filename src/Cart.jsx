@@ -3,13 +3,14 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CartProducts from "./cartProducts";
 import "/src/Styles/cart.css"
-import { removeCartProducts, amountOfItems } from "./prouctSlice";
+import { removeCartProducts, removeProductQuantity } from "./prouctSlice";
 
 function ShoppingCart() {
 
     const clothesIndex = useSelector((state) => state.clothesIndexReducer.value);
     const productsArray = useSelector((state) => state.womenClothesReducer.productObject);
     const cartLength = useSelector((state) => state.cartProductsReducer.cartProducts);
+    const itemAmount = useSelector((state) => state.amountOfItemsReducer.quantity);
     const dispatch = useDispatch();
 
     const [indexArray, setIndexArray] = useState(clothesIndex);
@@ -27,12 +28,19 @@ function ShoppingCart() {
 
     useEffect(() => {
         setCart(cartLength);
-    })
+        console.log(itemAmount);
+    },[cartLength])
 
-    function getkey(e) {
-        const target = e.target.closest(".productInCart");
-        const index = target.dataset.key;
-        console.log(target.dataset.key);
+    function reduceQuantity(e) {
+        const productTarget = e.target.closest(".productInCart");
+        const productIndex = Number(productTarget.dataset.key);
+
+        const item = itemAmount.find(obj => obj.index === productIndex);
+
+        if(item && item.quantity == 1) {
+            removeItem(productIndex)
+            dispatch(removeProductQuantity(item))
+        }
     }
 
     useEffect(() => {
@@ -43,14 +51,12 @@ function ShoppingCart() {
             const price = object[i].childNodes[1].childNodes[1].textContent.split("€")[0];
             const amount = object[i].childNodes[1].childNodes[2].childNodes[1].textContent.split("Quantity: ")[1];
             amountArray.push({price, amount})
-            
-            console.log(amountArray);
         }
 
         const totalPrice = amountArray.reduce((a,b) => {
             const subTotal = parseFloat(b.price) * b.amount
 
-            console.log(a + subTotal);
+            
             return a + subTotal
         }, 0)
 
@@ -63,7 +69,7 @@ function ShoppingCart() {
                 <NavBar cart={cart.length}/>
             </div>
             <div>
-                <h2>Total: {total}</h2>
+                <h2>Total: {total.toFixed(2)}</h2>
             </div>
             <div className="cardContainer">
                 {indexArray.length > 0 ? (
@@ -83,7 +89,7 @@ function ShoppingCart() {
                             price={object.price}
                             image={object.image}
                             handleRemove={removeItem}
-                            getKey={getkey}
+                            reduceQuantity={reduceQuantity}
                             />
                         )
                     }

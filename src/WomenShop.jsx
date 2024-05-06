@@ -2,7 +2,7 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CardItem from "./CardItem";
 import { useDispatch, useSelector } from "react-redux";
-import { addWomenClotheObject, addIndexClothes, cartTotalProducts } from "./prouctSlice";
+import { addWomenClotheObject, addIndexClothes, cartTotalProducts, addProductQuantity } from "./prouctSlice";
 import "/src/Styles/cardContainer.css"
 
 function WomenShop() {
@@ -44,11 +44,12 @@ function WomenShop() {
         if(!cart.includes(index)) {
             setCart([...cart, index]);
             dispatch(cartTotalProducts(index));
+            dispatch(addProductQuantity({index, quantity: 1}));
         }
     }
 
     function renderStar(numberOfStars) {
-        const stars = "★".repeat(Math.floor(numberOfStars))
+        const stars = "★".repeat(Math.floor(numberOfStars));
 
         return stars;
     }
