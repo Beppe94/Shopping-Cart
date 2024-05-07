@@ -69,7 +69,7 @@ function MenShop() {
                         title={object.title}
                         image={object.image}
                         price={object.price}
-                        handleClickF={handleClick}
+                        handleClick={handleClick}
                         count={object.rating.count}
                         rated={renderStar(object.rating.rate)}
                         />

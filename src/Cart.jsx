@@ -36,11 +36,19 @@ function ShoppingCart() {
         const productIndex = Number(productTarget.dataset.key);
 
         const item = itemAmount.find(obj => obj.index === productIndex);
-
+        console.log(productIndex);
         if(item && item.quantity == 1) {
             removeItem(productIndex)
             dispatch(removeProductQuantity(item))
-        }
+        } 
+    }
+
+    function increaseQuantity(e) {
+        const productTarget = e.target.closest(".productInCart");
+        const productIndex = Number(productTarget.dataset.key);
+        let quantity = e.target.closest(".productButtons").childNodes[1].textContent
+        
+        
     }
 
     useEffect(() => {
@@ -78,7 +86,9 @@ function ShoppingCart() {
                     const men = productsArray.menClothes.map(clothes => clothes.find(element => element.id === index));
                     const jewelery = productsArray.jewelery.map(jewels => jewels.find(element => element.id === index));
                     const electronics = productsArray.techs.map(tech => tech.find(element => element.id === index));
-
+                    
+                    const productAmount = itemAmount.find(item => item.index === index);
+                    
                     if(women || men || jewelery || electronics) {
                         const object = women[0] || men[0] || jewelery[0] || electronics[0]; 
 
@@ -90,6 +100,8 @@ function ShoppingCart() {
                             image={object.image}
                             handleRemove={removeItem}
                             reduceQuantity={reduceQuantity}
+                            increaseQuantity={increaseQuantity}
+                            quantity={productAmount.quantity}
                             />
                         )
                     }

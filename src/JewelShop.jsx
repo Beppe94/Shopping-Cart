@@ -70,7 +70,7 @@ function JewelShop() {
                         title={object.title}
                         price={object.price}
                         image={object.image}
-                        handleClickF={handleClick}
+                        handleClick={handleClick}
                         count={object.rating.count}
                         rated={renderStar(object.rating.rate)}
                         />
