@@ -1,16 +1,12 @@
 .navSection {
     position: absolute;
-    top: 0;
+    top: -150px;
     width: 100%;
 }
 
 .cartComponent {
+    position: relative;
     margin-top: 150px;
     display: flex;
 }
 
-.cardContainerCart {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}

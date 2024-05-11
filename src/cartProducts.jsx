@@ -14,8 +14,8 @@ function CartProducts({
 
 
     return (
-        <div className="productInCart" data-key={index}>
-            <div>
+        <div className="cartCard" data-key={index}>
+            <div className="cardImage">
                 <img src={image} />
             </div>
             <div className="productInfos">

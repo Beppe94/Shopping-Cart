@@ -32,7 +32,7 @@ function ShoppingCart() {
     },[cartLength])
 
     function reduceQuantity(e) {
-        const productTarget = e.target.closest(".productInCart");
+        const productTarget = e.target.closest(".cartCard");
         const productIndex = Number(productTarget.dataset.key);
 
         const newItemAmount = itemAmountState.map(item => {
@@ -49,7 +49,7 @@ function ShoppingCart() {
     }
 
     function increaseQuantity(e) {
-        const productTarget = e.target.closest(".productInCart");
+        const productTarget = e.target.closest(".cartCard");
         const productIndex = Number(productTarget.dataset.key);
 
         const newItemAmount = itemAmountState.map(item => {
@@ -64,7 +64,7 @@ function ShoppingCart() {
     }
 
     useEffect(() => {
-        const object = document.querySelectorAll(".productInCart");
+        const object = document.querySelectorAll(".cartCard");
         let amountArray = [];
 
         for(let i = 0; i < object.length; i++) {
@@ -88,8 +88,8 @@ function ShoppingCart() {
             <div className="navSection">
                 <NavBar cart={cart.length}/>
             </div>
-            <div>
-                <h2>Total: {total.toFixed(2)}</h2>
+            <div className="cartTotal">
+                <h2>Total: {total.toFixed(2)}€</h2>
             </div>
             <div className="cardContainer">
                 {indexArray.length > 0 ? (
@@ -108,7 +108,7 @@ function ShoppingCart() {
                             <CartProducts
                             index={object.id}
                             title={object.title}
-                            price={object.price}
+                            price={object.price * productAmount.quantity}
                             image={object.image}
                             handleRemove={removeItem}
                             reduceQuantity={reduceQuantity}
