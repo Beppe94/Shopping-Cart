@@ -8,6 +8,7 @@ import addTech from "./prouctSlice";
 import removeCartProducts from "./prouctSlice";
 import addProductQuantity from "./prouctSlice";
 import removeProductQuantity from "./prouctSlice";
+import changeProductQuantity from "./prouctSlice";
 
 
 
@@ -22,6 +23,6 @@ export default configureStore({
         removeProductReducer: removeCartProducts,
         amountOfItemsReducer: addProductQuantity,
         removeProductQuantityReducer: removeProductQuantity,
-
+        changeProductQuantityReducer: changeProductQuantity,
     },
 })

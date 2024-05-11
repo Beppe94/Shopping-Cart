@@ -3,7 +3,7 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CartProducts from "./cartProducts";
 import "/src/Styles/cart.css"
-import { removeCartProducts, removeProductQuantity } from "./prouctSlice";
+import { removeCartProducts, removeProductQuantity, changeProductQuantity } from "./prouctSlice";
 
 function ShoppingCart() {
 
@@ -16,7 +16,8 @@ function ShoppingCart() {
     const [indexArray, setIndexArray] = useState(clothesIndex);
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
-    
+    const [itemAmountState, setItemAmountState] = useState(itemAmount)
+
     function removeItem(index) {
         const newIndexArray = indexArray.filter(element => element !== index);
         const newCart = cart.filter(element => element !== index);
@@ -28,27 +29,38 @@ function ShoppingCart() {
 
     useEffect(() => {
         setCart(cartLength);
-        console.log(itemAmount);
     },[cartLength])
 
     function reduceQuantity(e) {
         const productTarget = e.target.closest(".productInCart");
         const productIndex = Number(productTarget.dataset.key);
 
-        const item = itemAmount.find(obj => obj.index === productIndex);
-        console.log(productIndex);
-        if(item && item.quantity == 1) {
-            removeItem(productIndex)
-            dispatch(removeProductQuantity(item))
-        } 
+        const newItemAmount = itemAmountState.map(item => {
+            if(item.index === productIndex && item.quantity > 1) {
+                return {...item, quantity: item.quantity -1}
+            } else if(item.index === productIndex && item.quantity === 1) {
+                removeItem(productIndex)
+            }
+            return item;
+        })
+
+        setItemAmountState(newItemAmount);
+        dispatch(removeProductQuantity(productIndex))
     }
 
     function increaseQuantity(e) {
         const productTarget = e.target.closest(".productInCart");
         const productIndex = Number(productTarget.dataset.key);
-        let quantity = e.target.closest(".productButtons").childNodes[1].textContent
+
+        const newItemAmount = itemAmountState.map(item => {
+            if(item.index === productIndex) {
+                return {...item, quantity: item.quantity +1}
+            }
+            return item;
+        })
         
-        
+        setItemAmountState(newItemAmount)
+        dispatch(changeProductQuantity(productIndex))
     }
 
     useEffect(() => {
@@ -87,7 +99,7 @@ function ShoppingCart() {
                     const jewelery = productsArray.jewelery.map(jewels => jewels.find(element => element.id === index));
                     const electronics = productsArray.techs.map(tech => tech.find(element => element.id === index));
                     
-                    const productAmount = itemAmount.find(item => item.index === index);
+                    const productAmount = itemAmountState.find(item => item.index === index);
                     
                     if(women || men || jewelery || electronics) {
                         const object = women[0] || men[0] || jewelery[0] || electronics[0]; 

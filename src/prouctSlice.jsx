@@ -54,14 +54,21 @@ const productSlice = createSlice({
             state.quantity.push(quantityToAdd);
         },
         removeProductQuantity: (state, action) => {
-            const itemToRemove = action.payload;
-            state.quantity = state.quantity.filter(item => item.index !== itemToRemove.index)
+            const itemToChange = action.payload;
+            state.quantity = state.quantity.map(item => {
+                if(item.index === itemToChange && item.quantity > 1) {
+                    return {...item, quantity: item.quantity -1}
+                } else {
+                    state.quantity.filter(item => item.index !== itemToChange);
+                }
+                return item;
+            })
         },
         changeProductQuantity: (state, action) => {
             const itemToChange = action.payload;
             state.quantity = state.quantity.map(item => {
-                if(item.index === itemToChange.index) {
-                    return {...item, quantity: item.quantity++}
+                if(item.index === itemToChange) {
+                    return {...item, quantity: item.quantity +1}
                 }
                 return item;
             })
@@ -79,6 +86,7 @@ export const {
     removeCartProducts,
     addProductQuantity,
     removeProductQuantity,
+    changeProductQuantity,
 } = productSlice.actions;
 
 
