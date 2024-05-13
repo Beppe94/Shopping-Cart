@@ -3,7 +3,7 @@ import NavBar from "./Nav";
 import { useEffect, useState } from "react";
 import CartProducts from "./cartProducts";
 import "/src/Styles/cart.css"
-import { removeCartProducts, removeProductQuantity, changeProductQuantity } from "./prouctSlice";
+import { removeCartProducts, decreaseProductQuantity, changeProductQuantity, removeProductQuantity } from "./prouctSlice";
 
 function ShoppingCart() {
 
@@ -25,6 +25,7 @@ function ShoppingCart() {
         setIndexArray(newIndexArray);
         setCart(newCart);
         dispatch(removeCartProducts(index));
+        dispatch(removeProductQuantity(index));
     }
 
     useEffect(() => {
@@ -45,7 +46,7 @@ function ShoppingCart() {
         })
 
         setItemAmountState(newItemAmount);
-        dispatch(removeProductQuantity(productIndex))
+        dispatch(decreaseProductQuantity(productIndex))
     }
 
     function increaseQuantity(e) {
@@ -64,24 +65,27 @@ function ShoppingCart() {
     }
 
     useEffect(() => {
-        const object = document.querySelectorAll(".cartCard");
-        let amountArray = [];
+        let totalPrice = 0;
 
-        for(let i = 0; i < object.length; i++) {
-            const price = object[i].childNodes[1].childNodes[1].textContent.split("€")[0];
-            const amount = object[i].childNodes[1].childNodes[2].childNodes[1].textContent.split("Quantity: ")[1];
-            amountArray.push({price, amount})
-        }
-
-        const totalPrice = amountArray.reduce((a,b) => {
-            const subTotal = parseFloat(b.price) * b.amount
-
+        itemAmount.forEach((item) => {
+            const women = productsArray.womenClothes.map(clothes => clothes.find(element => element.id === item.index))[0];
+            const men = productsArray.menClothes.map(clothes => clothes.find(element => element.id === item.index))[0];
+            const jewelery = productsArray.jewelery.map(jewels => jewels.find(element => element.id === item.index))[0];
+            const electronics = productsArray.techs.map(tech => tech.find(element => element.id === item.index))[0];
             
-            return a + subTotal
-        }, 0)
+            if(women) {
+                totalPrice += women.price * item.quantity;
+            } else if(men) {
+                totalPrice += men.price * item.quantity;
+            } else if(jewelery) {
+                totalPrice += jewelery.price * item.quantity;
+            } else if(electronics) {
+                totalPrice += electronics.price * item.quantity;
+            }
+        })
 
-        setTotal(totalPrice)
-    })
+        setTotal(totalPrice);
+    }, [itemAmount])
 
     return(
         <div className="cartComponent">
@@ -108,7 +112,7 @@ function ShoppingCart() {
                             <CartProducts
                             index={object.id}
                             title={object.title}
-                            price={object.price * productAmount.quantity}
+                            price={(object.price * productAmount.quantity).toFixed(2)}
                             image={object.image}
                             handleRemove={removeItem}
                             reduceQuantity={reduceQuantity}

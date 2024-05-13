@@ -54,12 +54,15 @@ const productSlice = createSlice({
             state.quantity.push(quantityToAdd);
         },
         removeProductQuantity: (state, action) => {
+            const elementToRemove = action.payload;
+
+            state.quantity = state.quantity.filter(element => element.index !== elementToRemove )
+        },
+        decreaseProductQuantity: (state, action) => {
             const itemToChange = action.payload;
             state.quantity = state.quantity.map(item => {
                 if(item.index === itemToChange && item.quantity > 1) {
                     return {...item, quantity: item.quantity -1}
-                } else {
-                    state.quantity.filter(item => item.index !== itemToChange);
                 }
                 return item;
             })
@@ -85,8 +88,9 @@ export const {
     addTech,
     removeCartProducts,
     addProductQuantity,
-    removeProductQuantity,
+    decreaseProductQuantity,
     changeProductQuantity,
+    removeProductQuantity
 } = productSlice.actions;
 
 

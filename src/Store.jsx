@@ -7,8 +7,9 @@ import addJewelery from "./prouctSlice";
 import addTech from "./prouctSlice";
 import removeCartProducts from "./prouctSlice";
 import addProductQuantity from "./prouctSlice";
-import removeProductQuantity from "./prouctSlice";
+import decreaseProductQuantity from "./prouctSlice";
 import changeProductQuantity from "./prouctSlice";
+import removeProductQuantity from "./prouctSlice";
 
 
 
@@ -22,7 +23,8 @@ export default configureStore({
         techReducer: addTech,
         removeProductReducer: removeCartProducts,
         amountOfItemsReducer: addProductQuantity,
-        removeProductQuantityReducer: removeProductQuantity,
+        removeProductQuantityReducer: decreaseProductQuantity,
         changeProductQuantityReducer: changeProductQuantity,
+        removeProductQuantityReducer: removeProductQuantity,
     },
 })
