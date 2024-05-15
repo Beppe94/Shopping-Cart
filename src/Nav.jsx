@@ -58,7 +58,7 @@ function NavBar({cart}) {
                     }
                 </div>
             
-                <div className=" align">
+                <div className="cartLink align">
                     <Link to="/cart">Cart</Link>
                     <div className="cartItems">
                         <img src={ShoppingCartLogo} alt="Shopping Cart icon" />

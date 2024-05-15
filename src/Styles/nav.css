@@ -14,7 +14,11 @@ li {
     font-size: 25px;
 }
 
-.navBar img {
+.homeLink img {
+    filter: invert();
+}
+
+.cartLink img {
     filter: invert();
 }
 
