@@ -6,7 +6,8 @@
     width: 600px;
     height: 340px;
     position: relative;
-    justify-content: center;
+    justify-content: flex-start;
+    box-shadow: 0 0 15px 3px rgb(29, 28, 28);
 }
 
 .cardImage {
@@ -70,3 +71,26 @@
     bottom: -20px;
     right: 10px;
 }
+
+@media screen and (max-width: 635px) {
+    .cartCard {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 300px;
+        height: 680px;
+        box-shadow: 0 0 15px 3px rgb(29, 28, 28);
+    }
+    .cardImage {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: min-content;
+    }
+
+    .cardImage img {
+        width: 100%;
+        object-fit: contain;
+    }
+}
+

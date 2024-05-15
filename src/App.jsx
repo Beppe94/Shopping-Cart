@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './Styles/App.css'
 import NavBar from './Nav'
 import Home from './Home'
 import { useSelector } from 'react-redux'

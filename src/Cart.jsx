@@ -122,7 +122,7 @@ function ShoppingCart() {
                         )
                     }
                 })) : (
-                    <div>
+                    <div className="emptyCart">
                         <h1>The cart is empty!</h1>
                         <h3>Choose something from our shop</h3>
                     </div>

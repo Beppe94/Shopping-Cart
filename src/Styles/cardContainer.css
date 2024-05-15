@@ -19,7 +19,17 @@
     animation: spin 1s linear infinite;
 }
 
+.emptyCart {
+    color: #fff;
+}
+
 @keyframes spin {
     0% { transform: rotatate(0deg) }
     100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width:585px) {
+    .cardContainer {
+        margin-top: 130px;
+    }
 }

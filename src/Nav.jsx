@@ -12,7 +12,7 @@ function NavBar({cart}) {
 
     return (
         <div className="navBar">
-            <div>
+            <div className="title">
                 <h1>My Shop</h1>
             </div>
             <div className="links">

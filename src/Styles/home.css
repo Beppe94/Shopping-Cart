@@ -118,6 +118,7 @@
         flex-direction: column;
         align-items: center;
         height: 320px;
+        font-size: 20px;
     }
 
     .womenShop {
@@ -183,5 +184,55 @@
     .accessoriesShop {
         display: flex;
         flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .groupShop {
+        width: 90%;
+    }
+
+    .groupShop img {
+        width: 100%;
+    }
+    
+    .description {
+        height: max-content;
+    }
+
+    .womenShop {
+        width: 90%;
+        height: max-content;
+    }
+
+    .womenShop img {
+        width: 100%;
+    }
+
+    .menShop {
+        width: 90%;
+        height: max-content;
+    }
+
+    .menShop img {
+        width: 100%;
+    }
+
+    .accessoriesShop {
+        width: 90%;
+        height: max-content;
+    }
+
+    .accessoriesShop img {
+        width: 100%;
+    }
+
+    .techShop {
+        width: 90%;
+        height: auto;
+    }
+
+    .techShop img {
+        width: 100%;
     }
 }

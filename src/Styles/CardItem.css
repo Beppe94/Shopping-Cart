@@ -8,7 +8,7 @@
     border: 2px solid #ffff;
     border-radius: 15px;
     width: 350px;
-    height: 610px;
+    height: 630px;
     box-shadow: 0 0 15px 3px rgb(0, 0, 0);
     transition: .5s;
     box-sizing: border-box;
@@ -41,14 +41,19 @@
 }
 
 .cardInfo h2 {
-    font-size: 21px;
+    font-size: 22px;
 }
 
 .cardButton {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     left: 35px;
     display: flex;
+    align-items: center;
     width: 80%;
     justify-content: space-between;
+}
+
+.cardButton h3 {
+    color: #ffff;
 }
