@@ -18,6 +18,18 @@ li {
     filter: invert();
 }
 
+.cartLink {
+    display: flex;
+    position: relative;
+}
+
+.cartLink a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
 .cartLink img {
     filter: invert();
 }
@@ -64,17 +76,13 @@ li {
     gap: 10px;
 }
 
-.cartItems {
-    position: relative;
-}
-
-.cartItems span {
+.cartLink span {
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: -15px;
+    right: -9px;
     top: -19px;
 }
 

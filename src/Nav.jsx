@@ -13,7 +13,9 @@ function NavBar({cart}) {
     return (
         <div className="navBar">
             <div className="title">
-                <h1>My Shop</h1>
+                <Link to="/">
+                    <h1>My Shop</h1>
+                </Link>
             </div>
             <div className="links">
                 <div className="homeLink align">
@@ -58,12 +60,12 @@ function NavBar({cart}) {
                     }
                 </div>
             
-                <div className="cartLink align">
-                    <Link to="/cart">Cart</Link>
-                    <div className="cartItems">
-                        <img src={ShoppingCartLogo} alt="Shopping Cart icon" />
-                        <span>{cart}</span>
-                    </div>
+                <div className="cartLink">
+                    <Link to="/cart">Cart
+                            <img src={ShoppingCartLogo} alt="Shopping Cart icon" />
+                            <span>{cart}</span>
+                       
+                    </Link>
                 </div>
             </div>
         </div>

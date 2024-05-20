@@ -23,7 +23,7 @@ export default configureStore({
         techReducer: addTech,
         removeProductReducer: removeCartProducts,
         amountOfItemsReducer: addProductQuantity,
-        removeProductQuantityReducer: decreaseProductQuantity,
+        decreaseProductQuantityReducer: decreaseProductQuantity,
         changeProductQuantityReducer: changeProductQuantity,
         removeProductQuantityReducer: removeProductQuantity,
     },
